@@ -23,6 +23,10 @@ export default class Dashboard extends Component {
     });
   };
 
+  // handleDoubleClick(e){
+  //   alert('i was clicked');
+  // }
+
   render() {
     return (
       <Fragment>
