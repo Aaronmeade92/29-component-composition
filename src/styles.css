@@ -1,0 +1,25 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+nav a {
+  margin-right: 1em;
+}
+
+form {
+  border: 2px solid tomato;
+  padding: 2em;
+}
+
+form input,
+form textarea,
+for button {
+  display: block;
+  margin: 1em;
+}
+
+span {
+  float: left;
+  margin-right: 1em;
+}
