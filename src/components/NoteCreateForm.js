@@ -6,7 +6,7 @@ export default class NoteCreateForm extends Component {
     editing: false,
     completed: false,
     content: "",
-    title: ""
+    title: "",
   };
   onSubmit = event => {
     event.preventDefault();

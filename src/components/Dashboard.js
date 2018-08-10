@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from "react";
 import NoteCreateForm from "./NoteCreateForm";
 import NoteList from "./NoteList";
+import NoteItem from './NoteItem';
+import NoteUpdateForm from './NoteUpdateForm'
 
 export default class Dashboard extends Component {
   state = {
-    notes: []
+    notes: [],
+    clicked: false,
   };
 
   addNote = note => {
@@ -23,26 +26,35 @@ export default class Dashboard extends Component {
     });
   };
 
-  // handleDoubleClick(e){
-  //   alert('i was clicked');
+  onUpdate = note => {
+    console.log({note})
+
+  }
+
+  // editClick = () => {
+  //   this.setState({
+  //     clicked: true,
+  //   })
   // }
+
+  renderUpdate = () => {
+
+    this.setState({
+      clicked: true,
+    })
+
+    if({clicked: true}){
+      return <NoteUpdateForm />
+    }
+  }
+
 
   render() {
     return (
       <Fragment>
-        <NoteCreateForm onSubmit={this.addNote} />
-        <NoteList notes={this.state.notes} onRemove={this.removeNote} />
-        <MaybeBaby condition={this.state.notes.length > 0}>
-          <Foo />
-        </MaybeBaby>
+        <NoteCreateForm onSubmit={this.addNote}  />
+        <NoteList notes={this.state.notes} onRemove={this.removeNote} update={this.onUpdate} renderUpdate={this.renderUpdate}/>
       </Fragment>
     );
   }
-}
-
-function MaybeBaby(props) {
-  return props.condition && props.children;
-}
-function Foo(props) {
-  return <h1>Hi from Foo</h1>;
 }

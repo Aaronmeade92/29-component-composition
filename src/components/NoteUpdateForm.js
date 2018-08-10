@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Component, Fragment} from 'react';
 
-export default class UpdateForm extends React.Component {
-
-    render(){
+export default props => {
         return(
-            <h1>Edit View</h1>
+            <React.Fragment>
+            <textarea>Edit</textarea>
+            <button onClick={() => {props.updated(props.note)}}></button>
+            </React.Fragment>
         )
-    }
 }
