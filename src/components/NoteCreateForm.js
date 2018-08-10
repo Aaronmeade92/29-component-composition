@@ -1,20 +1,12 @@
 import React, { Component } from "react";
 import uuid from "uuid/v4";
 
-/*
-id: always should contain the result of uuid.v1()
-editing: false by default
-completed: false by default
-content: user provided content
-title: user provided title
-  */
-
 export default class NoteCreateForm extends Component {
   state = {
     editing: false,
     completed: false,
     content: "",
-    title: ""
+    title: "",
   };
   onSubmit = event => {
     event.preventDefault();
