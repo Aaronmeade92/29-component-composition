@@ -7,7 +7,7 @@ import NoteUpdateForm from './NoteUpdateForm'
 export default class Dashboard extends Component {
   state = {
     notes: [],
-    clicked: false,
+    clicked: '',
   };
 
   addNote = note => {
@@ -28,24 +28,22 @@ export default class Dashboard extends Component {
 
   onUpdate = note => {
     console.log({note})
-
+    this.setState({
+      clicked: '',
+    })
+    const notes = this.state.notes.map(data => note.id === data.id ? note : data)
+    this.setState({
+      notes
+    })
   }
-
-  // editClick = () => {
-  //   this.setState({
-  //     clicked: true,
-  //   })
-  // }
 
   renderUpdate = () => {
 
     this.setState({
-      clicked: true,
+      clicked: 'edit',
     })
 
-    if({clicked: true}){
-      return <NoteUpdateForm />
-    }
+    console.log(this.state)
   }
 
 
@@ -53,7 +51,7 @@ export default class Dashboard extends Component {
     return (
       <Fragment>
         <NoteCreateForm onSubmit={this.addNote}  />
-        <NoteList notes={this.state.notes} onRemove={this.removeNote} update={this.onUpdate} renderUpdate={this.renderUpdate}/>
+        <NoteList notes={this.state.notes} onRemove={this.removeNote} update={this.onUpdate} renderUpdate={this.renderUpdate} clicked={this.state.clicked} updatedNote={this.newNote} />
       </Fragment>
     );
   }
